@@ -1,0 +1,89 @@
+ /*selector { propiedad_1=.....; propiedad_2=.......;}*/
+ * {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    background-color: rgb(175, 124, 175);
+}
+
+header {
+    background-color: rgb(163, 163, 190);
+}
+
+/*selector de etiqueta*/
+body {
+    background-color: #c3dffa;
+}
+
+ul {
+    margin: 20px;
+    background-color: rgb(245, 212, 219);
+}
+
+a {
+    background-color: rgb(160, 151, 151);
+}
+
+/*Selector de varios*/
+h1,
+h2,
+h3 {
+    text-align: center;
+}
+
+/*section descendiente de article*/
+arcicle section {
+    background-color: red;
+}
+
+article>section {
+    margin: 20px;
+    padding: 30vmin;
+}
+
+/*Clase azul chillon*/
+.azul-chillon {
+    background-color: blue;
+}
+
+#enlace-menu {
+    color: yellow;
+}
+
+#enlace-css {
+    color: pink;
+}
+
+a:hover {
+    font-size: 20px;
+    background-color: green;
+}
+
+.elemento-menu {
+    display: none;
+    /*diplay: forma de mostrar, none para NO mostrar*/
+}
+
+.titulo {
+    position: absolute;
+    left: 120px;
+    top: 300px;
+}
+.marco-colocado{
+    display: block;
+    width: 800px;
+}
+/*Media queries, condiciones para seleccionar que estilos
+se aplican a que dispoasitivos*/
+.articulo {
+    border: 10px solid black;
+}
+@media screen and (max-width: 992px){
+    article section{
+        width:40%;
+        display: inline;
+        border: 3px solid pink;
+    }
+}
