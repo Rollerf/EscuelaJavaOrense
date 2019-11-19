@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="componente_eventos">
+        <label>Evento con listener</label>
+        <input id="input_listo" />
+        <input type="button" id="btn_listo" value="Pulsa" />
+        <div id="info_evento"></div>
+        </br>
+        <label>Otros eventos</label>
+        <input id="input_otro" />
+        <input type="button" id="btn_otro" value="Otro" />
+        <div id="info_evento_otro"></div>
+        </br>
+    </div>
+
+    <script>
+
+        class gestionEventos {
+            
+            constructor(){
+                let elementoPosesion;//Hacer esto variable de clase
+            }
+            recorrerTags() {
+                for (let index = 0; index < document.getElementsByTagName("input").length; index++) {
+                    alert(document.getElementsByTagName("input")[index].type);
+                    elementoPosesion = document.getElementsByTagName("input")[index];
+                    if (elementoPosesion.type == "button") {
+                        elementoPosesion.addEventListener("click", funCallbkAlPulsar(evento));
+                    }
+                    
+                }
+
+                function funCallbkAlPulsar(evento) {
+                elementoPosesion.value = "Tipo evento: " + evento.type;
+                evento.currentTarget.value = "Puedes repetir";
+                elemento.innerHTML += "evento.currentTarget.id= " + evento.currentTarget.id;
+                elemento.className = "div-marco";
+            }
+
+            function funCallbkAlPulsar2(evento) {
+                document.getElementsByTagName("body")[0].className = "fondo-body";
+            }
+
+            }
+            
+
+
+        }
+
+        const evento = new gestionEventos();
+
+        evento.recorrerTags();
+/*
+                let input_listo = document.getElementById("input_listo");
+                let btn_listo = document.getElementById("btn_listo");
+                //Otros eventos
+                let input_otro = document.getElementById("input_otro");
+                let btn_otro = document.getElementById("btn_otro");
+        
+                btn_listo.value="Pulsa";
+                btn_listo.addEventListener("click", funCallbkAlPulsar);
+                btn_listo.addEventListener("click",funCallbkAlPulsar2);
+        
+                //Otros eventos
+                btn_otro.value="Dale";
+                btn_otro.addEventListener("click", funCallbkAlPulsar);
+                btn_otro.addEventListener("click",funCallbkAlPulsar2);
+        */
+        /*
+                function funCallbkAlPulsar(evento) {
+                    input_listo.value = "Tipo evento: " + evento.type;
+                    let info_evento = document.getElementById("info_evento");
+                    evento.currentTarget.value = "Puedes repetir";
+                    info_evento.innerHTML += "evento.currentTarget.id= " + evento.currentTarget.id;
+                    info_evento.className = "div-marco";
+        
+                }
+                function funCallbkAlPulsar2(evento) {
+                    document.getElementsByTagName("body")[0].className = "fondo-body";
+                }
+                */
+
+    </script>
+    <style>
+        .div-marco {
+            border: blue solid;
+            background-color: lightblue;
+        }
+
+        .fondo-body {
+            background-color: lightgreen;
+        }
+    </style>
+</body>
+
+</html>
