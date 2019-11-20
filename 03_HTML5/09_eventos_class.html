@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="componente_eventos">
+        <label>Evento con listener</label>
+        <input id="input_listo" />
+        <input type="button" id="btn_listo" value="Pulsame" />
+        <div id="info_evento"></div>
+        </br>
+        <label>Otros eventos</label>
+        <input id="input_otro" />
+        <input type="button" id="btn_otro" value="PulsaEsteOtro" />
+        <div id="info_evento_otro"></div>
+        </br>
+        <div onclick="alert('Llamada evento desde HTML');">
+            Zona onclick="alert();"
+        </div>
+        <div id="quiereUnOnClick">
+            Zona elemDOM.onclick = function(){
+
+            }
+        </div>
+    </div>
+    <script src="js/09_eventos_class.js"></script>
+    <script>
+        window.addEventListener("load", function(){
+            let quiereUnOnClick = document.getElementById("quiereUnOnClick");
+            quiereUnOnClick.onclick = function(evento){
+                alert("'Llamada evento desde JS, propiedad. onclick'");
+            }
+        })
+        /*
+        window.addEventListener("load", function () {
+            let gestorEvListo = new GestorEventosES5("input_listo", "btn_listo", "info_evento_listo");
+            let gestorEvOtro = new GestorEventosES5("input_otro", "btn_otro", "info_evento_otro");
+        })
+        */
+
+        window.addEventListener("load", function () {
+            let gestorEvListo = new GestorEventosES6("input_listo", "btn_listo", "info_evento_listo");
+            let gestorEvOtro = new GestorEventosES6("input_otro", "btn_otro", "info_evento_otro");
+        })
+
+    </script>
+
+    <style>
+        .div-marco {
+            border: blue solid;
+            background-color: lightblue;
+        }
+
+        .fondo-body {
+            background-color: lightgreen;
+        }
+    </style>
+</body>
+
+</html>

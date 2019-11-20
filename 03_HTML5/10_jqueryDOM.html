@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* selector {   propiedad_1=....; propiedad_2=....; } */
+        * {
+            /* Selector universal */
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* selector de etiqueta */
+        body {
+            background-color: #DDEEFF;
+            /* RGB */
+            font-size: 1.2em;
+            /* Propiedad que se hereda de padres a hijos */
+        }
+
+        header {
+            background-color: rgb(182, 202, 221);
+
+        }
+
+        /* selector varios */
+        h1,
+        h2,
+        h3 {
+            background-color: rgb(168, 200, 233);
+        }
+
+        /* section descendiente de article */
+        article section {
+            background-color: red;
+            width: 80%;
+            /* 25 % */
+        }
+
+        /* section descendiente de article */
+        article>section {
+            margin: 20px;
+            background-color: red;
+            width: 100px;
+        }
+
+        /* clase azul chillón */
+        .azul-chillon {
+            height: 50px;
+            /* 50 pixeles */
+            background-color: blue;
+        }
+
+        /* Selector */
+        #enlace-menu,
+        #enlace-css {
+            color: red;
+        }
+
+        a:hover {
+            background-color: yellow;
+        }
+
+        .elemento-menu {
+            display: inline;
+            /* display: forma de mostrar, none para NO mostrar */
+        }
+
+        .titulo {
+            /* Posición relativa a donde debería estar */
+            position: relative;
+            left: 5px;
+            top: 5px;
+            display: inline-block;
+        }
+
+        .marco-colocado {
+            display: inline-block;
+            width: 400px;
+        }
+
+        /* Media queries, condiciones para seleccionar qué 
+    etilos se aplican a qué dispositivos */
+        .articulo {
+            border: black solid;
+        }
+
+        .enlace-articulo {
+            padding: 1em;
+            margin: 1em;
+            background-color: antiquewhite;
+        }
+
+        /* On screens that are 992px or less, set the background color to blue */
+        @media screen and (max-width: 992px) {
+            article section {
+                width: 40%;
+                display: inline-block;
+                border: burlywood solid;
+            }
+        }
+
+        @media screen and (min-width: 991px) {
+            article section {
+                width: 80%;
+                display: inline-block;
+                border: blue solid;
+            }
+        }
+    </style>
+    <!--<link rel="stylesheet" href="estilos/02_ejemplo_css3.css"/>-->
+</head>
+
+<body>
+    <header>
+        <img src="images/logo_pelota.jpg" style="width: 100px; height: 100px" alt="Texto alternativo" />
+        <div class="titulo">
+            <h1>Título de la web</h1>
+        </div>
+        <nav id="menu">
+            <ul>
+                <!-- Unordered List -->
+                <li class="elemento-menu"><a id="enlace-menu" name="enlace-menu" href="01_estructura_html5.html">Menú
+                        principal</a></li>
+                <li class="elemento-menu"><a id="enlace-css" href="02_ejemplo_css3.html">Ejemplos CSS3</a></li>
+                <li class="elemento-menu"><a href="03_formularios.html">Formularios</a></li>
+                <li class="elemento-menu"><a href="04_ejemplos_js.html">Webs dinámicas con JS</a></li>
+            </ul>
+        </nav>
+    </header>
+    <nav id="otro_menu">Otro menú</nav>
+    <section>
+        <!-- Los encabezados no se deben usar para el estilo, si no por el contenido-->
+        <h2 id="titulo_2">Encabezado nivel 2, como título secundario</h2>
+        <h3>Encabezado nivel 3, otros títulos</h3>
+        <article class="articulo marco-colocado ">
+            <h4 class="azul-chillon">Aquí iría un artículo.</h4>
+            Con el texto quea bla bla bla... Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, natus
+            voluptas sed, tempora eos harum quam quae facilis vero minima ducimus rerum dicta deserunt, pariatur
+            inventore impedit laboriosam. Dolorem, eveniet.
+        </article>
+        <article class="articulo marco-colocado">
+            <h4>Aquí iría otro artículo</h4>
+            Con otro texto que bla bla bla... Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae,
+            blanditiis iusto, eveniet magnam vel molestias cupiditate quod iure eum commodi pariatur dicta beatae, odit
+            quos numquam distinctio? Perspiciatis, error esse.
+
+        </article>
+        <section class="marco-colocado  section-antigua-azul-chillon">Una parte del artículo. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Totam perferendis consequuntur dolorem nostrum incidunt debitis facere
+            similique ullam quisquam, ratione autem quae consectetur iste, unde aliquam quod ut fugit tempora!</SECTION>
+        <sectiON class="marco-colocado">Otra parte del artículo. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. At vel eligendi quod quam? Fugiat perferendis porro dignissimos labore eaque, totam explicabo
+            exercitationem ex magnam excepturi similique necessitatibus suscipit mollitia iure.</section>
+        <table>
+            <tr>
+                <!-- TR para cada una de las filas-->
+                <th class="azul-chillon">Nombre</th> <!-- TH Para las cabeceras de las columnas -->
+                <th>Apellidos</th>
+                <th>Edad</th>
+                <th>Contacto</th>
+            </tr>
+            <tr>
+                <td>Ana</td> <!-- TD Para cada una de las celdas de las columnas-->
+                <td>Pérez</td>
+                <td>40</td>
+                <td><a href="mailto://ana.perez@vn.com">Enviar email</a></td>
+            </tr>
+            <tr>
+                <td>Juan</td> <!-- TD Para cada una de las celdas de las columnas-->
+                <td>Gómez</td>
+                <td>41</td>
+                <td><a href="tel://910001122">Llamar por teléfono</a></td>
+            </tr>
+        </table>
+        <sectiON class="marco-colocado">
+            <article class="articulo marco-colocado">
+                <h4>Aquí otro mas</h4>
+                Con otro texto que bla bla bla... Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae,
+                blanditiis iusto, eveniet magnam vel molestias cupiditate quod iure eum commodi pariatur dicta beatae,
+                odit
+                quos numquam distinctio? Perspiciatis, error esse.
+
+            </article>
+        </section>
+    </section>
+    <aside>
+        <p>Típico submenú con enlaces de interés</p>
+        <ul>
+            <li><a href="https://www.w3schools.com/">www.w3schools.com</a></li>
+            <li><a href="https://developer.mozilla.org/es/">Web Mozilla</a></li>
+        </ul>
+    </aside>
+    <aside>
+        <input type="button" value="Accion" id="boton_uno" />
+    </aside>
+    <footer class="articulo">Pié de página
+        <nav>
+            <ul>
+                <li>Enlaces a RR.SS.</li>
+            </ul>
+        </nav>
+        <address>Avenida Buenos Aires, 40. tu ru rú</address>
+    </footer>
+    <script src="jsJQuery/jquery-3.4.1.js"></script>
+    <script src="jsJQuery/10_jqueryDOM.js"></script>
+</body>
+
+</html>
