@@ -26,6 +26,11 @@ public class HolaCssServlet extends HttpServlet{
         try (PrintWriter salida = respuestaHttp.getWriter()) {
             salida.print("body{");
             salida.print("color:red;}");
+            for(int i=0; i<10; i++){
+                salida.println(".fuente-1" + i + "{");
+                salida.println("font-size: " + ((float) 10 + i * 2) / 10 + "em;");
+                salida.println("color:red; }");
+            }
             
         }
     }

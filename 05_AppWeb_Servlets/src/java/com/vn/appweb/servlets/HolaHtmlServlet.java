@@ -30,7 +30,7 @@ public class HolaHtmlServlet extends HttpServlet {
                     + "<h2>Hola que pasa</h2>"
                     + "<ul>");
             for (int i = 0; i < 10; i++) {
-                salida.print("<li> Iteración " + i + "</li>");
+                salida.print("<li class='fuente-1" + i + "'> Iteración " + i + "</li>");
             }
             salida.print("</ul>");
             salida.println("<br/>Ruta: "+peticionHttp.getContextPath());
