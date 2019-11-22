@@ -33,3 +33,14 @@ nbdist/
 .nb-gradle/
 
 #TODO: Ficheros de Eclipse, de VSCode...
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/LICENSE
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/test
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/index.html
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/KEYS
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/LICENSE
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/NOTICE
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/RELEASE-NOTES.html
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/bin
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/demo
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/docs
+05_AppWeb_Servlets/lib/db-derby-10.14.2.0-bin/javadoc
