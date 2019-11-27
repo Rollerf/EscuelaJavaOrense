@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.vn.controladores;
+package com.vn.appusuarios.controladores;
 
-import com.vn.usuario.modelo.ChivatoServicios;
-import com.vn.usuario.modelo.ServicioUsuarios;
-import com.vn.usuario.modelo.Usuario;
+import com.vn.appusuarios.modelo.logica.ChivatoServicios;
+import com.vn.appusuarios.modelo.logica.ServicioUsuarios;
+import com.vn.appusuarios.modelo.Usuario;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
