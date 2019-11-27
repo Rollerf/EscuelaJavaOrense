@@ -17,11 +17,11 @@ import java.util.ArrayList;
  *
  * @author PC
  */
-public class DAOUsuarios implements IGenericDao<Usuario> {
+public class DAOUsuariosDerby implements IGenericDao<Usuario> {
 
     static Connection con;
 
-    public DAOUsuarios() throws ClassNotFoundException, SQLException {
+    public DAOUsuariosDerby() throws ClassNotFoundException, SQLException {
         Class.forName("org.apache.derby.jdbc.ClientDriver");
         DriverManager.registerDriver(new org.apache.derby.jdbc.EmbeddedDriver());
     }
@@ -29,11 +29,13 @@ public class DAOUsuarios implements IGenericDao<Usuario> {
     public static boolean abrirConexion() throws SQLException {
         if (con != null) {
             if (con.isClosed()) {
-                con = DriverManager.getConnection("jdbc:derby://localhost:1527/UsuarioDB",
+                //con = DriverManager.getConnection("jdbc:derby://localhost:1527/UsuarioDB",
+                 //       "root", "1234");
+                con = DriverManager.getConnection("jdbc:derby:memory:db_usuarios;create=true",
                         "root", "1234");
             }
         } else {
-            con = DriverManager.getConnection("jdbc:derby://localhost:1527/UsuarioDB",
+        	con = DriverManager.getConnection("jdbc:derby:memory:db_usuarios;create=true",
                     "root", "1234");
         }
         return true;
@@ -51,6 +53,7 @@ public class DAOUsuarios implements IGenericDao<Usuario> {
         }
         return false;
     }
+    
 
     /**
      * Comprueba si el email esta en uso y si no lo esta crea un nuevo usuario
