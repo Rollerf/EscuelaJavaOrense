@@ -5,11 +5,13 @@
  */
 package com.vn.appusuarios.modelo.logica;
 
-import com.vn.appusuarios.modelo.dao.DAOUsuarios;
 import com.vn.appusuarios.modelo.Usuario;
+import com.vn.appusuarios.modelo.dao.DAOUsuariosMySQL;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,18 +20,28 @@ import java.util.regex.Pattern;
  * @author Jose Clase que llama al DAO en sus metodos para realizar acciones
  * BBDD
  */
-public class ServicioUsuarios {
+public class ServicioUsuarios implements ChivatoServicios {
 
-    DAOUsuarios daoUser;
+    DAOUsuariosMySQL daoUser;
     ChivatoServicios chivato;
     private String mensajeError;
 
     public ServicioUsuarios() {
-        daoUser = new DAOUsuarios();
+        try {
+            daoUser = new DAOUsuariosMySQL();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ServicioUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            notificarError("Crear DAOUsuarios: " + ex.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicioUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            notificarError("Abrir Conexion: " + ex.getMessage());
+        }catch (Exception ex) {
+        	
+        }
 
     }
 
-    void setChivatoListener(ChivatoServicios chivato) {
+    public void setChivatoListener(ChivatoServicios chivato) {
         this.chivato = chivato;
     }
 
@@ -51,7 +63,7 @@ public class ServicioUsuarios {
                             Usuario usuario = new Usuario(email, password, nombre, iEdad);
                             return usuario;
                         } else {
-                  
+                            notificarError("Edad menor a 12 Conexion: ");
                             return null;
                         }
                     } catch (NumberFormatException e) {
@@ -73,9 +85,10 @@ public class ServicioUsuarios {
         return null;
     }
 
-    void notificarError(String error) {
+    @Override
+    public void notificarError(String error) {
 
-        System.out.println("Error servicioUsuario" + mensajeError);
+        System.out.println("Error servicioUsuario: " + mensajeError);
         if (chivato != null) {
             chivato.notificarError(mensajeError);
         }
@@ -83,10 +96,13 @@ public class ServicioUsuarios {
 
     public Usuario crear(String email, String password, String nombre, String edad) throws Exception {
         Usuario nuevoUsu = validarDatos(email, password, nombre, edad);
-        if (nuevoUsu != null) {
+        if (daoUser.validarEmail(email)) {
+            if (nuevoUsu != null) {
 
-            return daoUser.crear(nuevoUsu);
+                return daoUser.crear(nuevoUsu);
+            }
         }
+        notificarError("Crear: " + "No se ha podido crear el usuario, email probablemente en uso");
         return null;
 
     }
@@ -103,20 +119,43 @@ public class ServicioUsuarios {
     }
 
     public boolean eliminar(int id) {
-        return daoUser.eliminar(id);
-
+        try {
+            return daoUser.eliminar(id);
+        } catch (SQLException ex) {
+            notificarError("Eliminar: " + ex.getMessage());
+            Logger.getLogger(ServicioUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     public Usuario leerUno(int id) {
-        return daoUser.obtenerPorId(id);
+        try {
+            return daoUser.obtenerPorId(id);
+        } catch (SQLException ex) {
+            notificarError("Leer uno por id: " + ex.getMessage());
+            Logger.getLogger(ServicioUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     public Usuario leerUno(String email) {
-        return daoUser.obtenerPorEmail(email);
+        try {
+            return daoUser.obtenerPorEmail(email);
+        } catch (SQLException ex) {
+            notificarError("Leer uno por email: " + ex.getMessage());
+            Logger.getLogger(ServicioUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
-    public List<Usuario> leerTodos() throws SQLException {
+    public List<Usuario> leerTodos() {
 
-        return daoUser.obtenerTodos();
+        try {
+            return daoUser.obtenerTodos();
+        } catch (SQLException ex) {
+            notificarError("Leer todos: " + ex.getMessage());
+            Logger.getLogger(ServicioUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

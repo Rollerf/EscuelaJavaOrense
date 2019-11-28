@@ -9,8 +9,8 @@ package com.vn.appusuarios.modelo.logica;
  *
  * @author PC
  */
-public interface ChivatoServicios {
-    
-    void notificarError(String mensaje);
+ public interface ChivatoServicios {
+
+    public void notificarError(String mensaje);
     
 }

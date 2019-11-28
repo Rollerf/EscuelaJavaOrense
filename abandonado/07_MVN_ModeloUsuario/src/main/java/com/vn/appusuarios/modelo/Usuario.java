@@ -7,16 +7,27 @@ package com.vn.appusuarios.modelo;
 
 /**
  *
- * @author Jose
- * Clase Usuario
+ * @author Jose Clase Usuario
  */
 public class Usuario {
 
     private String nombre, email, password;
     private int edad, id;
 
-    public Usuario() {
+    @Override
+    public boolean equals(Object obj) {
+        if (super.equals(obj)) //To change body of generated methods, choose Tools | Templates.
+        return true;
+        else{
+            if(obj==null) return false;
+            Usuario usu = (Usuario) obj;
+            return usu.getId() == this.getId() && 
+                    (usu.getEmail() == null ? this.getEmail()==null:
+                    usu.getEmail().equals(this.getEmail()));
+                }
     }
+
+    public Usuario() {}
 
     public Usuario(String email, String password, String nombre, int edad) {
         this.nombre = nombre;
@@ -64,7 +75,5 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
-    
-   
 
 }

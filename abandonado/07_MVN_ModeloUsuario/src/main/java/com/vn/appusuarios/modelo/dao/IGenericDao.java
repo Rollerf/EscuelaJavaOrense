@@ -14,11 +14,11 @@ public interface IGenericDao<T> {
     
     public abstract T crear(T  objetoNuevo) throws Exception;
     
-    T obtenerPorId(int index);
+    T obtenerPorId(int index) throws Exception;
     
-    T obtenerPorEmail(String email);
+    T obtenerPorEmail(String email) throws Exception;
     
     T modificar(T objConDatosNuevo) throws Exception;
     
-    boolean eliminar(int id);
+    boolean eliminar(int id) throws Exception;
 }

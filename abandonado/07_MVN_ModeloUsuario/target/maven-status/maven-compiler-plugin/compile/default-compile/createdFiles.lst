@@ -1,0 +1,5 @@
+com\vn\appusuarios\modelo\dao\DAOUsuarios.class
+com\vn\appusuarios\modelo\Usuario.class
+com\vn\appusuarios\modelo\dao\IGenericDao.class
+com\vn\appusuarios\modelo\logica\ServicioUsuarios.class
+com\vn\appusuarios\modelo\logica\ChivatoServicios.class
