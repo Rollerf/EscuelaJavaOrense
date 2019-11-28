@@ -5,13 +5,14 @@
  */
 package com.vn.appusuarios.controladores;
 
-import com.vn.appusuarios.modelo.logica.ChivatoServicios;
 import com.vn.appusuarios.modelo.logica.ServicioUsuarios;
 import com.vn.appusuarios.modelo.Usuario;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PC
  */
+@WebServlet(name = "UsuariosServlet", urlPatterns = {"/usuarios.do"})
 public class UsuariosServlet extends HttpServlet {
 
     /**
@@ -28,33 +30,30 @@ public class UsuariosServlet extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, Exception {
+        
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String nombre = request.getParameter("nombre");
         String edad = request.getParameter("edad");
         ServicioUsuarios srvUsu = new ServicioUsuarios();
-        srvUsu.setChivatoListener(new ChivatoServicios() {
-            @Override
-            public void notificarError(String mensaje) {
-                request.getSession().setAttribute("mensajeError", "ERROR al crear: " + mensaje);
-            }
+    
+        if (request.getMethod() == "POST") {
 
-        });
-
-        if ("POST" == request.getMethod()) {
-
-            //srvUsu.crear(email, password, nombre, edad);
+        }
+    
             Usuario usuario = srvUsu.crear(email, password, nombre, edad);
             if (usuario != null && usuario.getId() >= 0) {
-                request.getSession().setAttribute("emailUsuario", email);
-                request.getRequestDispatcher("registrado.jsp").forward(request, response);
+                request.getSession().setAttribute("emailUsuario",email);
+                request.getRequestDispatcher("registrado.jsp")
+                        .forward(request, response);
             } else {
                 request.getRequestDispatcher("registrarse.jsp").forward(request, response);
             }
-
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

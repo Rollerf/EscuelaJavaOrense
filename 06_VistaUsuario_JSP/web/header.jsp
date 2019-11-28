@@ -3,23 +3,20 @@
     Created on : 21-feb-2019, 20:43:31
     Author     : IEUser
 --%>
-<%  %>
+<%%>
+<h2>Aplicación Gestión MVC JSP</h2>
 <header>
-    <h2>Aplicacion Gestion MVC JSP</h2>
     <nav>
         <a href="index.jsp">Inicio</a>
-        <% if (false) {%>
-
+    <% if (false) {%>
         <a href="listar.jsp">Listar</a>   
         <a href="eliminar.jsp">Eliminar</a>
         
-        <%} else {%>
-        
+    <%  } else { %>
+    
         <a href="login.jsp">Login</a>
         <a href="registrarse.jsp">Registrarse</a>
-        
-        <%}%>
+    <% }%>  
     </nav>
-
     <h3 style="color: red"> </h3>
 </header>

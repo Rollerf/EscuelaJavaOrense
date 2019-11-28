@@ -7,7 +7,7 @@ package com.vn.appusuarios.modelo.logica;
 
 /**
  *
- * @author PC
+ * @author pc
  */
 public interface ChivatoServicios {
     

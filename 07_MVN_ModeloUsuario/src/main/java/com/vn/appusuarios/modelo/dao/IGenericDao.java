@@ -5,20 +5,21 @@
  */
 package com.vn.appusuarios.modelo.dao;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author pc
- * @param <T>
  */
 public interface IGenericDao<T> {
     
-    public abstract T crear(T  objetoNuevo) throws Exception;
+    public abstract T crear(T  objetoNuevo)  throws Exception ;
     
-    T obtenerPorId(int index);
+    T obtenerPorId(int id)  throws Exception ;
     
-    T obtenerPorEmail(String email);
+    ArrayList<T> obtenerTodos()  throws Exception ;
     
-    T modificar(T objConDatosNuevo) throws Exception;
+    T modificar(T objConDatosNuevo) throws Exception ;
     
-    boolean eliminar(int id);
+    boolean eliminar(int id) throws Exception ;
 }

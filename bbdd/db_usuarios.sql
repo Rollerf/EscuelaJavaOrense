@@ -44,7 +44,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `db_usuarios`;
-INSERT INTO `db_usuarios`.`usuario` (`id`, `email`, `password`, `nombre`, `edad`) VALUES (, 'aa@aa.aa', '1234', 'Aaaa Aaaaa', 22);
+INSERT INTO `db_usuarios`.`usuario` (`id`, `email`, `password`, `nombre`, `edad`) VALUES (default, 'aa@aa.aa', '1234', 'Aaaa Aaaaa', 22);
 
 COMMIT;
 
