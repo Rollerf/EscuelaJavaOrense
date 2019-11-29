@@ -21,10 +21,8 @@
 	<%-- 		<%=servicioU.leerUno(usuario.getEmail()).getNombre()%> --%>
 	<!-- 	</h2> -->
 	<h2 style="color: green">
-		ID:
-		<%=usuario.getId()%>
-		<br> Nombre:
-		<%=usuario.getNombre()%>
+		ID: <c:out value=""></c:out>
+		<br> Nombre:<c:out value="${usuario.nombre}"></c:out>
 	</h2>
 </body>
 </html>

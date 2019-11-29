@@ -3,12 +3,13 @@
     Created on : 21-feb-2019, 20:42:40
     Author     : IEUser
 --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="head.jsp" %>
 <html>
     <%= head() %>
     
     <body>
-        <%@include file="header.jsp" %>
+         <%@include file="header.jsp" %>
         <h1>Formulario JSP de registro</h1> 
         <% 
         Object mensajeDeError = request.getSession().getAttribute("mensajeError");

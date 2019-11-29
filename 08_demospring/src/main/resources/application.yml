@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: 08_demospring
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/db_banco
+    username: root
+    password: 1234
+# Esto le dirá a Hibernate que se encargue 
+# de crear la tabla
+  jpa:
+    hibernate:
+      ddl-auto: create
